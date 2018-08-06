@@ -5,7 +5,7 @@
 <script>
     $(document).ready(function (e) {
         //Vars
-        var html = '<div class="row"> <div class="col-md-6"> <label for="driver">Driver:</label> <input type="text" name="driver[]" id="childdriver" class="form-control form-control-lg mb-3 mx-auto"> </div> <div class="col-md-5"> <label for="hours">Hours:</label> <input type="time" name="hours[]" id="childhours"class="form-control form-control-lg"> </div> <a href="#" id="remove" class="btn btn-success col-md-1">Remove</a> </div>';
+        var html = '<div class="row"><div class="col-md-6"> <label for="driver">Driver:</label> <select name="driver[]" id="driver" class="form-control form-control-lg mb-3 "> <?php foreach ($data['drivers'] as $driver) : ?> <option class="test"><?php echo $driver->name; ?></option> <?php endforeach; ?> </select> </div> <div class="col-md-5"> <label for="hours">Hours:</label> <input type="time" name="hours[]" id="childhours"class="form-control form-control-lg"> </div> <a href="#" id="remove" class="btn btn-success col-md-1">Remove</a> </div>';
         //Add rows
         $("#add").click(function (e) {
             $("#field").append(html)
@@ -33,9 +33,9 @@
                 <div class="col-md-6">
                     <label for="driver">Driver:</label>
                     <select name="driver[]" id="driver"
-                           class="form-control form-control-lg mb-3 mx-auto">
+                           class="form-control form-control-lg mb-3 ">
                         <?php foreach ($data['drivers'] as $driver) : ?>
-                        <option><?php echo $driver->name; ?></option>
+                        <option class="test"><?php echo $driver->name; ?></option>
                         <?php endforeach; ?>
                     </select>
                 </div>

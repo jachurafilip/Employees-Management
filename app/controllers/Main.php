@@ -10,8 +10,8 @@
             redirect('drivers');
         }
       $data = [
-        'title' => 'Pizza Hut - Kierowcy',
-        'description' => 'Portal do zarządzania kierowcami PH'
+        'title' => 'Pizza Hut - Drivers',
+        'description' => 'Log in or register'
       ];
      
       $this->view('main/index', $data);
@@ -20,7 +20,7 @@
     public function about(){
       $data = [
         'title' => 'About Us',
-        'description' => 'App to share posts with other users'
+        'description' => ''
       ];
 
       $this->view('main/about', $data);
