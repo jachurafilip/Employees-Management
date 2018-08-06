@@ -17,7 +17,7 @@
                 <a class="nav-link" href="<?php echo URLROOT; ?>/drivers/end">End day</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="<?php echo URLROOT; ?>/main/about">Get summary</a>
+                <a class="nav-link" href="<?php echo URLROOT; ?>/drivers/summary">Get summary</a>
             </li>
         </ul>
         

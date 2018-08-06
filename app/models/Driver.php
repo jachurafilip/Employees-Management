@@ -77,5 +77,16 @@ class Driver
         }
     }
 
+    public function getSummary($data)
+    {
+        $this->db->query('SELECT * FROM shifts where date BETWEEN :from AND :to order by driver_id, date');
+        $this->db->bind(':from',$data['from']);
+        $this->db->bind(':to',$data['to']);
+
+        $row = $this->db->resultSet();
+
+        return $row;
+    }
+
 
 }

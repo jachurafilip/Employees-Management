@@ -114,7 +114,7 @@
 
                 if(!$check)
                 {
-                    flash('driver_message', 'Driver Added');
+                    flash('driver_message', 'Saved!');
                     redirect('drivers');
                 }else
                 {
@@ -132,4 +132,57 @@
                 $this->view('drivers/end', $data);
             }
         }
+
+        public function summarycompleted()
+        {
+            if($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+                $_POST = filter_input_array(INPUT_POST,FILTER_SANITIZE_STRING);
+                $data = [
+                    'from' => $_POST['from'],
+                    'to' => $_POST['to'],
+                    'from_err' => '',
+                    'to_err' => ''
+            ];
+
+                if(empty($data['from']))
+                {
+                    $data['from_err'] = 'Please fill the field';
+                }
+                if(empty($data['to']))
+                {
+                    $data['to_err'] = 'Please fill the field';
+                }
+                if(empty($data['to_err']) && empty($data['from_err']))
+                {
+                    $row = $this->driverModel->getSummary($data);
+
+                    foreach($row as $single)
+                    {
+                        $single->driver_id = $this->driverModel->getDriverById($single->driver_id)->name;
+                    }
+                    $data['row'] = $row;
+                        flash('driver_message', 'Driver Added');
+                        $this->view('drivers/summarycompleted',$data);
+
+
+                } else
+                {
+                    //Load view with errors
+                    $this ->view('drivers/summary',$data);
+                }
+
+            }else {
+                $data = [];
+                $this->view('drivers/summary', $data);
+            }
+
+        }
+
+
+    public function summary()
+{
+    $data = [];
+    $this->view('drivers/summary', $data);
+}
     }
