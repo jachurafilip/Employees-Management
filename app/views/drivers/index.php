@@ -13,8 +13,10 @@
     </div>
     <?php foreach($data['drivers'] as $driver) : ?>
     <div class="card card-body mb-3">
-        <h4 class="card-title"><?php echo $driver->name;?></h4>
+        <h4 class="card-title"><?php echo $driver->name;?>
+        <a href="<?php echo URLROOT; ?>/drivers/show/<?php echo $driver->id; ?>" class="btn btn-dark pull-right">More</a></h4>
     </div>
+
 
     <?php endforeach; ?>
 

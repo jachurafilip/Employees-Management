@@ -2,7 +2,7 @@
     <a href="<?php echo URLROOT; ?>/drivers" class="btn btn-light"><i class="fa fa-backward"></i> Back</a>
     <div class="col-md-6 mx-auto">
     <div class="card card-body bg-light mt-5">
-        <?php flash('register_success'); ?>
+        <?php flash('driver_message'); ?>
         <h2 class="col-md-6 mx-auto">Add Driver</h2>
         <form action="<?php echo URLROOT; ?>/drivers/add" method="post">
             <div class="form-group">

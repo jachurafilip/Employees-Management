@@ -11,8 +11,14 @@
             <a class="nav-link" href="<?php echo URLROOT; ?>">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?php echo URLROOT; ?>/pages/about">About</a>
+            <a class="nav-link" href="<?php echo URLROOT; ?>/main/about">About</a>
           </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/drivers/end">End day</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="<?php echo URLROOT; ?>/main/about">Get summary</a>
+            </li>
         </ul>
         
         <ul class="navbar-nav ml-auto">
