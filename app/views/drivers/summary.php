@@ -12,7 +12,7 @@
                        class="form-control form-control-lg <?php echo (!empty($data['from_err'])) ? 'is-invalid' : ''; ?>"
                        value="<?php echo $data['from']; ?>">
                 <span class="invalid-feedback"><?php echo $data['from']; ?></span>
-                <label for="to">From: </label>
+                <label for="to"> To: </label>
                 <input type="date" name="to"
                        class="form-control form-control-lg <?php echo (!empty($data['to_err'])) ? 'is-invalid' : ''; ?>"
                        value="<?php echo $data['to']; ?>">
