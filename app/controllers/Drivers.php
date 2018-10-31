@@ -34,6 +34,8 @@
                 $data = [
                     'name' => trim($_POST['name']),
                     'user_id' => $_SESSION['user_id'],
+                    'rate'  => trim($_POST['rate']),
+                    'rate_err'=>'',
                     'name_err' => ''
                     ];
 
@@ -43,9 +45,17 @@
                 {
                     $data['name_err'] = 'Please fill the field';
                 }
+                if(empty($data['rate']))
+                {
+                    $data['rate_err'] = 'Please fill the field';
+                }
+                if($data['rate']<0)
+                {
+                    $data['rate_err'] = 'Hourly rate cannot be negative';
+                }
 
                 //Make sure no errors
-                if(empty($data['name_err']))
+                if(empty($data['name_err']) && empty($data['rate_err']))
                 {
                     if($this->driverModel->addDriver($data))
                     {
@@ -87,7 +97,8 @@
             {
                 $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
                 $driver = $_POST['driver'];
-                $hours = $_POST['hours'];
+                $timein = $_POST['timein'];
+                $timeout = $_POST['timeout'];
                 $data=[
                     'date'=>$_POST['date'],
                     'driver' => '',
@@ -101,7 +112,8 @@
                     $data=[
                         'date'=>$_POST['date'],
                         'driver' => $id->id,
-                        'hours' => $hours[$key]
+                        'timein' => $timein[$key],
+                        'timeout'=> $timeout[$key]
                     ];
 
                     if(!$this->driverModel->addShift($data))

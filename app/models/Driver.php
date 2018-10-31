@@ -21,10 +21,11 @@ class Driver
 
     public function addDriver($data)
     {
-        $this->db->query('INSERT INTO drivers (name, user_id) VALUES(:name, :user_id)');
+        $this->db->query('INSERT INTO drivers (name, user_id,hourly_rate) VALUES(:name, :user_id,:rate)');
         // Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':user_id', $data['user_id']);
+        $this->db->bind(':rate', $data['rate']);
 
         // Execute
         if($this->db->execute()){
@@ -68,7 +69,7 @@ class Driver
         // Bind values
         $this->db->bind(':date', $data['date']);
         $this->db->bind(':driver_id', $data['driver']);
-        $this->db->bind(':hours', $data['hours']);
+        $this->db->bind(':hours', (strtotime($data['timeout'])-strtotime($data['timein']))/3600);
 
         if($this->db->execute()){
             return true;

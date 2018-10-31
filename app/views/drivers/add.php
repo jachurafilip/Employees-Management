@@ -10,7 +10,11 @@
                 <input type="text" name="name"
                        class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>"
                        value="<?php echo $data['name']; ?>">
-                <span class="invalid-feedback"><?php echo $data['name_err']; ?></span>
+                <label for="rate">Hourly rate: </label>
+                <input type="number" step="0.01" name="rate"
+                       class="form-control form-control-lg <?php echo (!empty($data['name_err'])) ? 'is-invalid' : ''; ?>"
+                       value="<?php echo $data['rate']; ?>">
+                <span class="invalid-feedback"><?php echo $data['name_err']; echo $data['rate_err']; ?></span>
             </div>
             <input type="submit" class="btn btn-success col-md-6"value="Submit">
         </form>
