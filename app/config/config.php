@@ -12,4 +12,4 @@
   // Site Name
   define('SITENAME', 'Workers');
   // App Version
-  define('APPVERSION', '1.0.0');
+  define('APPVERSION', '1.1.0');
