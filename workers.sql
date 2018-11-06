@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 07 Sie 2018, 11:08
--- Wersja serwera: 10.1.32-MariaDB
--- Wersja PHP: 7.2.5
+-- Czas generowania: 06 Lis 2018, 20:05
+-- Wersja serwera: 10.1.36-MariaDB
+-- Wersja PHP: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,7 +31,8 @@ SET time_zone = "+00:00";
 CREATE TABLE `drivers` (
   `id` int(11) NOT NULL,
   `name` varchar(255) NOT NULL,
-  `user_id` int(11) NOT NULL
+  `user_id` int(11) NOT NULL,
+  `hourly_rate` decimal(7,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -43,9 +44,23 @@ CREATE TABLE `drivers` (
 CREATE TABLE `shifts` (
   `id` int(11) NOT NULL,
   `date` date NOT NULL,
-  `hours` time NOT NULL,
+  `hours` decimal(10,2) NOT NULL,
   `driver_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Zrzut danych tabeli `shifts`
+--
+
+INSERT INTO `shifts` (`id`, `date`, `hours`, `driver_id`) VALUES
+(1, '1111-11-11', '11.18', 1),
+(12, '2018-11-06', '12.25', 1),
+(13, '2018-11-06', '12.17', 2),
+(14, '2018-11-06', '11.83', 3),
+(15, '2018-11-07', '3.00', 1),
+(16, '2018-11-07', '3.00', 1),
+(17, '2018-11-07', '12.00', 2),
+(18, '2018-11-07', '9.45', 3);
 
 -- --------------------------------------------------------
 
@@ -90,19 +105,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT dla tabeli `drivers`
 --
 ALTER TABLE `drivers`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `shifts`
 --
 ALTER TABLE `shifts`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT dla tabeli `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
