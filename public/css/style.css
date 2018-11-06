@@ -1,0 +1,33 @@
+.detailed-summary
+{
+    margin-bottom: 50px;
+}
+
+h3.final-summary
+{
+    margin-bottom: 20px;
+}
+h2.summary
+{
+    margin-bottom: 20px;
+}
+
+.final-row
+{
+    font-weight: bold;
+}
+.driver-name
+{
+    height: 50px !important;
+}
+
+.add-btn
+{
+    height: 50px !important;
+    margin-top: 32px;
+}
+
+a.add-btn
+{
+    padding-top: 14px;
+}

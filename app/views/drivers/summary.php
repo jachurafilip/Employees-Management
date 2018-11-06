@@ -10,12 +10,12 @@
                 <label for="from">From: </label>
                 <input type="date" name="from"
                        class="form-control form-control-lg <?php echo (!empty($data['from_err'])) ? 'is-invalid' : ''; ?>"
-                       value="<?php echo $data['from']; ?>">
+                       value="<?php echo date('Y-m-d');?>">
                 <span class="invalid-feedback"><?php echo $data['from']; ?></span>
                 <label for="to"> To: </label>
                 <input type="date" name="to"
                        class="form-control form-control-lg <?php echo (!empty($data['to_err'])) ? 'is-invalid' : ''; ?>"
-                       value="<?php echo $data['to']; ?>">
+                       value="<?php echo date('Y-m-d');?>">
                 <span class="invalid-feedback"><?php echo $data['to']; ?></span>
             </div>
             <input type="submit" class="btn btn-success col-md-6"value="Submit">

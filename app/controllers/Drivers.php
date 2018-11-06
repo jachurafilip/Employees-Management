@@ -99,11 +99,7 @@
                 $driver = $_POST['driver'];
                 $timein = $_POST['timein'];
                 $timeout = $_POST['timeout'];
-                $data=[
-                    'date'=>$_POST['date'],
-                    'driver' => '',
-                    'hours' => ''
-                ];
+
 
                 $check = false;
                 foreach ($driver as $key => $name)
@@ -113,15 +109,41 @@
                         'date'=>$_POST['date'],
                         'driver' => $id->id,
                         'timein' => $timein[$key],
-                        'timeout'=> $timeout[$key]
+                        'timeout'=> $timeout[$key],
+                        'dateerr'=>'',
+                        'timeinerr'=>'',
+                        'timeouterr'=>''
                     ];
+
+                    if(empty($data['date']))
+                    {
+                        $data['dateerr'] = 'Please fill in the date';
+                    }
+
+                    if(empty($data['timein']))
+                    {
+                        $data['timeinerr'] = 'Please fill in time in';
+                    }
+                    if(empty($data['timeout']))
+                    {
+                        $data['timeouterr'] = 'Please fill in time out';
+                    }
+                    if(empty($data['dateerr'])&&empty($data['timeinerr'])&&empty($data['timeouterr']))
+                    {
 
                     if(!$this->driverModel->addShift($data))
                     {
                         $check = true;
                     }
 
+                    }
+                    else
+                    {
+                        //Load view with errors
+                        flashBad('driver_message', 'Try again - please fill in all the data');
+                        redirect('drivers');
 
+                    }
                 }
 
                 if(!$check)
@@ -168,13 +190,8 @@
                 if(empty($data['to_err']) && empty($data['from_err']))
                 {
                     $row = $this->driverModel->getSummary($data);
-
-                    foreach($row as $single)
-                    {
-                        $single->driver_id = $this->driverModel->getDriverById($single->driver_id)->name;
-                    }
                     $data['row'] = $row;
-                        flash('driver_message', 'Driver Added');
+
                         $this->view('drivers/summarycompleted',$data);
 
 

@@ -5,7 +5,7 @@
 <script>
     $(document).ready(function (e) {
         //Vars
-        var html = '<div class="row"><div class="col-md-6"> <label for="driver">Driver:</label> <select name="driver[]" id="driver" class="form-control form-control-lg mb-3 "> <?php foreach ($data['drivers'] as $driver) : ?> <option class="test"><?php echo $driver->name; ?></option> <?php endforeach; ?> </select> </div><div class="col-md-2">\n' +
+        var html = '<div class="row"><div class="col-md-6"> <label for="driver">Driver:</label> <select name="driver[]" id="driver" class="driver-name form-control form-control-lg mb-3 "> <?php foreach ($data['drivers'] as $driver) : ?> <option class="test"><?php echo $driver->name; ?></option> <?php endforeach; ?> </select> </div><div class="col-md-2">\n' +
             '                    <label for="hours">Time in: </label>\n' +
             '                    <input type="time" name="timein[]" id="timein"\n' +
             '                           class="form-control form-control-lg ">\n' +
@@ -14,7 +14,7 @@
             '                    <label for="hours">Time out: </label>\n' +
             '                    <input type="time" name="timeout[]" id="timeout"\n' +
             '                           class="form-control form-control-lg ">\n' +
-            '                </div> <a href="#" id="remove" class="btn btn-success col-md-1">Remove</a> </div>';
+            '                </div> <a href="#" id="remove" class="btn add-btn btn-success col-md-1">Remove</a> </div>';
         //Add rows
         $("#add").click(function (e) {
             $("#field").append(html)
@@ -23,9 +23,6 @@
         $("#field").on('click','#remove',function (e) {
             $(this).parent('div').remove();
         });
-
-
-        //Populate values
     });
 </script>
 
@@ -36,13 +33,13 @@
             <div class="form-group col-md-6 mx-auto">
                 <label for="date">Date: </label>
                 <input type="date" name="date"
-                       class="form-control form-control-lg mb-3">
+                       class="form-control form-control-lg mb-3" value = "<?php echo date('Y-m-d');?>">
             </div>
             <div class="row">
                 <div class="col-md-6">
                     <label for="driver">Driver:</label>
                     <select name="driver[]" id="driver"
-                           class="form-control form-control-lg mb-3 ">
+                           class="form-control form-control-lg mb-3 driver-name ">
                         <?php foreach ($data['drivers'] as $driver) : ?>
                         <option class="test"><?php echo $driver->name; ?></option>
                         <?php endforeach; ?>
@@ -59,7 +56,7 @@
                            class="form-control form-control-lg ">
                 </div>
 
-                    <a href="#" id="add" class="btn btn-success col-md-1">Add</a>
+                    <a href="#" id="add" class="btn add-btn btn-success col-md-1">Add</a>
             </div>
         </div>
         <input type="submit" class="btn btn-success col-md-12" value="Submit">

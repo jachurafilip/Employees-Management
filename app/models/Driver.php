@@ -80,14 +80,22 @@ class Driver
 
     public function getSummary($data)
     {
-        $this->db->query('SELECT * FROM shifts where date BETWEEN :from AND :to order by driver_id, date');
+        $this->db->query('SELECT * FROM shifts join drivers on drivers.id=shifts.driver_id where date BETWEEN :from AND :to order by driver_id, date');
         $this->db->bind(':from',$data['from']);
         $this->db->bind(':to',$data['to']);
 
         $row = $this->db->resultSet();
+        $result['detailed'] = $row;
 
-        return $row;
+        $this->db->query('SELECT d.name, sum(s.hours)*d.hourly_rate as hours FROM shifts s join drivers d on d.id=s.driver_id where date BETWEEN :from AND :to group by d.name');
+        $this->db->bind(':from',$data['from']);
+        $this->db->bind(':to',$data['to']);
+
+        $final = $this->db->resultSet();
+        $result['final'] = $final;
+         return $result;
     }
+
 
 
 }

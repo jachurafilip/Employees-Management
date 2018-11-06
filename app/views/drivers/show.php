@@ -7,8 +7,8 @@
 <h3> Last shifts:</h3>
 <?php foreach($data['shifts'] as $shift) : ?>
     <div class="card card-body mb-3">
-        <h4 class="card-title"><?php echo $shift->date;?>
-            <p class="pull-right"><?php echo $shift->hours;?></p>
+        <h4 class="card-title">Date: <?php echo $shift->date;?>
+            <p class="pull-right">Lenght: <?php echo $shift->hours;?></p>
     </div>
 <?php endforeach; ?>
 
