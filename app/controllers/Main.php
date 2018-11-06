@@ -10,7 +10,7 @@
             redirect('drivers');
         }
       $data = [
-        'title' => 'Pizza Hut - Drivers',
+        'title' => 'Drivers',
         'description' => 'Log in or register'
       ];
      
