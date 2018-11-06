@@ -12,10 +12,9 @@ This project was created to support drivers management in a local pizza restaura
 I have also used a basic MVC framework written by myself
 
 ## Configuration
-After you clone my repo into "workers" directoryt there are some things that you must change in code to make it work.
+After you clone my repo into "workers" directoryt there are some things that you must set to make it work.
 * Create a new database (name it "workers") and then import workers.sql file into it.
 * In app/config/config.php change the DB params and the URL root.
-* In public/.htaccess change **Rewrite Base** field so that it is a path to public directory
 * You also have to make sure that .htaccess files are supported on your server.
 
 After all that you should be able to succesfully run the webpage.
