@@ -10,6 +10,6 @@
   // URL Root
   define('URLROOT', 'http://localhost/workers');
   // Site Name
-  define('SITENAME', 'Workers');
+  define('SITENAME', 'Drivers');
   // App Version
   define('APPVERSION', '1.1.0');

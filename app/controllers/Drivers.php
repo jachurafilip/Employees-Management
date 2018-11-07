@@ -140,7 +140,7 @@
                     else
                     {
                         //Load view with errors
-                        flashBad('driver_message', 'Try again - please fill in all the data');
+                        flash('driver_message', 'Try again - please fill in all the data','alert alert-danger');
                         redirect('drivers');
 
                     }

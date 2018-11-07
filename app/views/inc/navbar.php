@@ -24,8 +24,11 @@
         <ul class="navbar-nav ml-auto">
           <?php if(isset($_SESSION['user_id'])) : ?>
           <li class="nav-item">
-              <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+              <a class="nav-link" href="<?php echo URLROOT; ?>/users/changepassword">Change Password</a>
             </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="<?php echo URLROOT; ?>/users/logout">Logout</a>
+              </li>
           <?php else : ?>
             <li class="nav-item">
               <a class="nav-link" href="<?php echo URLROOT; ?>/users/register">Register</a>

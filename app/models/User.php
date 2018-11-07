@@ -52,4 +52,29 @@
         return false;
       }
     }
+
+    public function changePassword($email,$password)
+    {
+
+            $this->db->query('UPDATE users SET password=:pass where email=:email');
+            $this->db->bind(':pass',$password);
+            $this->db->bind(':email',$email);
+            if($this->db->execute())
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+    }
+
+    public function getHashedPassword($email)
+    {
+        $this->db->query('SELECT * from users where email=:email');
+        $this->db->bind(':email',$email);
+        $row = $this->db->single();
+        return $row->password;
+    }
+
   }
