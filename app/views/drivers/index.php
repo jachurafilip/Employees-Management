@@ -1,6 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 
     <?php flash('driver_message'); ?>
+    <?php flash('password_changed');?>
     <div class="row">
         <div class="col-md-6">
             <h1>Your Drivers</h1>

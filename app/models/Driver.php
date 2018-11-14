@@ -21,11 +21,13 @@ class Driver
 
     public function addDriver($data)
     {
-        $this->db->query('INSERT INTO drivers (name, user_id,hourly_rate) VALUES(:name, :user_id,:rate)');
+        $this->db->query('INSERT INTO drivers (name, user_id,hourly_rate,password,login) VALUES(:name, :user_id,:rate,:pass,:login)');
         // Bind values
         $this->db->bind(':name', $data['name']);
         $this->db->bind(':user_id', $data['user_id']);
         $this->db->bind(':rate', $data['rate']);
+        $this->db->bind(':pass',$data['password']);
+        $this->db->bind(':login',$data['login']);
 
         // Execute
         if($this->db->execute()){

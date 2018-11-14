@@ -169,6 +169,7 @@
           $_SESSION['user_id'] = $user->id;
           $_SESSION['user_email'] = $user->email;
           $_SESSION['user_name'] = $user->name;
+          $_SESSION['user_type'] = 'manager';
           redirect('drivers');
       }
 
@@ -177,6 +178,7 @@
           unset($_SESSION['user_id']);
           unset($_SESSION['user_email']);
           unset($_SESSION['user_name']);
+          unset($_SESSION['user_type']);
           session_destroy();
           redirect('users/login');
       }
