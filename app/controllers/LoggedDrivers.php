@@ -26,13 +26,9 @@ class LoggedDrivers extends Controller
             $data['login_err'] = 'Please enter login';
         }
 
-        // Validate Password
-        if (empty($data['password'])) {
-            $data['password_err'] = 'Please enter password';
-        }
         // Check for user
 
-        if($this->loggedDriverModel->findDriverByEmail($data['login']))
+        if($this->loggedDriverModel->findDriverByLogin($data['login']))
         {
             //user found
         }
@@ -40,6 +36,29 @@ class LoggedDrivers extends Controller
         {
             $data['user_err'] = 'User not found';
         }
+        if (empty($data['password'])) {
+            $data['password_err'] = 'Please enter password';
+        }
+        if($this->loggedDriverModel->hasAccount($data['login']))
+        {
+        }
+        else
+        {
+            $this->loggedDriverModel->createAccount($data['login'],$data['password']);
+        }
+
+        $loggedIn = $this->loggedDriverModel->login($data['login'],$data['password']);
+        if($loggedIn)
+        {
+            $this->createUserSession($loggedIn);
+        }
+        else
+        {
+            $data['password_err'] = 'Password incorrect';
+            $this->view('loggedDrivers/login',$data);
+        }
+
+
 
     }
     else
@@ -54,4 +73,30 @@ class LoggedDrivers extends Controller
     }
 
  }
+    public function createUserSession($user)
+    {
+        $_SESSION['user_id'] = $user->id;
+        $_SESSION['user_login'] = $user->login;
+        $_SESSION['user_name'] = $user->name;
+        $_SESSION['user_type'] = 'driver';
+        redirect('drivers');
+    }
+    public function logout()
+    {
+        unset($_SESSION['user_id']);
+        unset($_SESSION['user_login']);
+        unset($_SESSION['user_name']);
+        unset($_SESSION['user_type']);
+        session_destroy();
+        redirect('users/login');
+    }
+
+    public function isLoggedIn()
+    {
+        if (isset($_SESSION['user_id'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

@@ -38,7 +38,6 @@
                     'rate_err'=>'',
                     'name_err' => '',
                     'login'=>substr(md5(rand()),0,6),
-                    'password'=>password_hash(substr(md5(rand()), 0, 7),PASSWORD_DEFAULT)
                     ];
 
                 //Validate name

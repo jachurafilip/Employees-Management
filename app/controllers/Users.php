@@ -138,7 +138,7 @@
 
                   if ($loggedInUser) {
                       // Create Session
-                      $this->createUserSession($loggedInUser);
+                      $this->createUserSession($loggedInUser,1);
                   } else {
                       $data['password_err'] = 'Password incorrect';
 
